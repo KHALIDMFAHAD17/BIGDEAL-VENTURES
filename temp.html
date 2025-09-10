@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Filter Sidebar</title>
+  <style>
+    /* Reset & base */
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      background: #f7f7f7;
+    }
+
+    /* Sidebar container */
+    .filter-sidebar {
+      background: #fff;
+      border: 1px solid #ddd;
+      width: 320px;
+      border-radius: 8px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      max-height: 850px;
+      overflow-y: auto;
+    }
+
+    /* Header: Applied Filters + Clear All */
+    .filter-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .filter-header h2 {
+      font-size: 18px;
+      font-weight: 600;
+      margin: 0;
+    }
+    .clear-btn {
+      font-weight: 600;
+      font-size: 14px;
+      color: #a3a3a3;
+      cursor: pointer;
+      border: none;
+      background: none;
+      padding: 0;
+      transition: color 0.3s;
+    }
+    .clear-btn:hover {
+      color: #e14c4c;
+    }
+
+    /* Applied filters container */
+    .applied-filters {
+      margin-top: 12px;
+      min-height: 40px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .applied-filter-tag {
+      background: #fbedeb;
+      color: #e14c4c;
+      font-size: 12px;
+      font-weight: 600;
+      padding: 6px 12px;
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      cursor: default;
+      user-select: none;
+    }
+    .applied-filter-tag .remove-tag {
+      font-weight: 700;
+      cursor: pointer;
+      padding: 0 2px;
+    }
+    .applied-filter-tag .remove-tag:hover {
+      color: #b22323;
+    }
+
+    /* Section */
+    .filter-section {
+      border-top: 1px solid #eee;
+      margin-top: 20px;
+      padding-top: 16px;
+      font-size: 14px;
+      color: #333;
+    }
+    .filter-section-header {
+      font-weight: 600;
+      font-size: 16px;
+      color: #333;
+      display: flex;
+      justify-content: space-between;
+      cursor: pointer;
+      user-select: none;
+    }
+    .filter-section-header span {
+      display: flex;
+      align-items: center;
+      font-weight: 400;
+      font-size: 13px;
+      color: #888;
+      cursor: pointer;
+      user-select: none;
+    }
+    .caret {
+      border-style: solid;
+      border-width: 5px 5px 0 5px;
+      border-color: #777 transparent transparent transparent;
+      display: inline-block;
+      margin-left: 8px;
+      margin-top: 4px;
+      transition: transform 0.3s ease;
+    }
+    .filter-section.collapsed .caret {
+      transform: rotate(-90deg);
+      margin-top: 0;
+    }
+    .filter-section-content {
+      margin-top: 12px;
+      transition: max-height 0.3s ease;
+      overflow: hidden;
+    }
+    .filter-section.collapsed .filter-section-content {
+      max-height: 0;
+      padding: 0;
+      margin: 0;
+    }
+
+    /* Tags for types & construction status */
+    .tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .tag {
+      padding: 6px 14px;
+      background: #fbedeb;
+      color: #e14c4c;
+      font-weight: 500;
+      font-size: 13px;
+      border-radius: 20px;
+      cursor: pointer;
+      user-select: none;
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+    .tag.selected {
+      background: #e14c4c;
+      color: white;
+    }
+    .tag .add-icon {
+      font-weight: 600;
+      font-size: 14px;
+      margin-left: 6px;
+      user-select: none;
+    }
+    .tag.selected .add-icon {
+      display: none;
+    }
+
+    /* Bedrooms tags smaller */
+    .bedroom-tags .tag {
+      padding: 5px 12px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+    .bedroom-tags .tag.selected {
+      background: #e14c4c;
+      color: white;
+    }
+
+    /* Range slider container */
+    .range-slider-container {
+      margin-top: 8px;
+    }
+    .range-labels {
+      display: flex;
+      justify-content: space-between;
+      font-size: 12px;
+      color: #999;
+      margin-top: 4px;
+      user-select: none;
+    }
+    .double-range {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 8px;
+    }
+    .double-range input[type="range"] {
+      flex: 1;
+      pointer-events: auto;
+    }
+    .range-values {
+      display: flex;
+      gap: 8px;
+      margin-top: 8px;
+    }
+    .range-values input[type="number"] {
+      width: 70px;
+      padding: 6px 8px;
+      font-size: 13px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      user-select: none;
+    }
+    .range-values input[type="number"]:focus {
+      outline-color: #e14c4c;
+      border-color: #e14c4c;
+    }
+
+    /* Checkboxes */
+    .locality-list {
+      margin-top: 8px;
+    }
+    .locality-list label {
+      display: flex;
+      align-items: center;
+      font-size: 14px;
+      gap: 8px;
+      cursor: pointer;
+      user-select: none;
+      margin-bottom: 8px;
+      color: #333;
+    }
+    .locality-list input[type="checkbox"] {
+      accent-color: #e14c4c;
+      cursor: pointer;
+    }
+    .more-localities {
+      font-size: 13px;
+      color: #a3a3a3;
+      cursor: pointer;
+      user-select: none;
+      font-weight: 600;
+      margin-top: 8px;
+      display: inline-block;
+    }
+    .more-localities:hover {
+      color: #e14c4c;
+    }
+
+    /* Scroll bar for sidebar */
+    .filter-sidebar::-webkit-scrollbar {
+      width: 8px;
+    }
+    .filter-sidebar::-webkit-scrollbar-track {
+      background: #f7f7f7;
+    }
+    .filter-sidebar::-webkit-scrollbar-thumb {
+      background: #ccc;
+      border-radius: 4px;
+    }
+    .filter-sidebar::-webkit-scrollbar-thumb:hover {
+      background: #b3b3b3;
+    }
+  </style>
+</head>
+<body>
+
+  <aside class="filter-sidebar" aria-label="Property filters">
+
+    <!-- Applied Filters + Clear All -->
+    <div class="filter-header">
+      <h2>Applied Filters</h2>
+      <button class="clear-btn" id="clearAllBtn">Clear All</button>
+    </div>
+
+    <!-- Applied filters tags container -->
+    <div class="applied-filters" id="appliedFiltersContainer"></div>
+
+    <!-- Budget Section -->
+    <section class="filter-section" id="budgetSection">
+      <div class="filter-section-header" tabindex="0" data-toggle-target="budgetSection">
+        Budget
+        <span class="caret"></span>
+      </div>
+      <div class="filter-section-content">
+
+        <div class="range-slider-container">
+          <div class="double-range">
+            <input id="budgetMin" type="range" min="0" max="100000" step="1000" value="10000" />
+            <input id="budgetMax" type="range" min="0" max="100000" step="1000" value="65000" />
+          </div>
+          <div class="range-values">
+            <input id="budgetMinInput" type="number" min="0" max="100000" step="1000" value="10000" />
+            <input id="budgetMaxInput" type="number" min="0" max="100000" step="1000" value="65000" />
+          </div>
+          <div class="range-labels">
+            <span>Min</span>
+            <span>Max</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Types of property -->
+    <section class="filter-section" id="propertyTypeSection">
+      <div class="filter-section-header" tabindex="0" data-toggle-target="propertyTypeSection">
+        Types of property
+        <span class="caret"></span>
+      </div>
+      <div class="filter-section-content">
+        <div class="tag-list" id="propertyTypeTags">
+          <div class="tag" data-filter="propertyType" data-value="Residential Apartment">Residential Apartment <span class="add-icon">+</span></div>
+          <div class="tag" data-filter="propertyType" data-value="Residential Land">Residential Land <span class="add-icon">+</span></div>
+          <div class="tag" data-filter="propertyType" data-value="Incorporated House/Villa">Incorporated House/Villa <span class="add-icon">+</span></div>
+          <div class="tag" data-filter="propertyType" data-value="Residential Lands">Residential Lands <span class="add-icon">+</span></div>
+          <div class="tag" data-filter="propertyType" data-value="Independent/Duplex Floor">Independent/Duplex Floor <span class="add-icon">+</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- No of Bedrooms -->
+    <section class="filter-section" id="bedroomsSection">
+      <div class="filter-section-header" tabindex="0" data-toggle-target="bedroomsSection">
+        No of Bedrooms
+        <span class="caret"></span>
+      </div>
+      <div class="filter-section-content">
+        <div class="tag-list bedroom-tags" id="bedroomTags">
+          <div class="tag" data-filter="bedrooms" data-value="1 BHK">1 BHK <span class="add-icon">+</span></div>
+          <div class="tag" data-filter="bedrooms" data-value="2 BHK">2 BHK <span class="add-icon">+</span></div>
+          <div class="tag" data-filter="bedrooms" data-value="3 BHK">3 BHK <span class="add-icon">+</span></div>
+          <div class="tag" data-filter="bedrooms" data-value="4+ BHK">4+ BHK <span class="add-icon">+</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Construction status -->
+    <section class="filter-section" id="constructionStatusSection">
+      <div class="filter-section-header" tabindex="0" data-toggle-target="constructionStatusSection">
+        Construction status
+        <span class="caret"></span>
+      </div>
+      <div class="filter-section-content">
+        <div class="tag-list" id="constructionStatusTags">
+          <div class="tag" data-filter="constructionStatus" data-value="New Launch">New Launch <span class="add-icon">+</span></div>
+          <div class="tag" data-filter="constructionStatus" data-value="Under Construction">Under Construction <span class="add-icon">+</span></div>
+          <div class="tag" data-filter="constructionStatus" data-value="Ready to Move">Ready to Move <span class="add-icon">+</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Area Section -->
+    <section class="filter-section" id="areaSection">
+      <div class="filter-section-header" tabindex="0" data-toggle-target="areaSection">
+        Area
+        <span class="caret"></span>
+      </div>
+      <div class="filter-section-content">
+
+        <div class="range-slider-container">
+          <div class="double-range">
+            <input id="areaMin" type="range" min="0" max="5000" step="50" value="200" />
+            <input id="areaMax" type="range" min="0" max="5000" step="50" value="1300" />
+          </div>
+          <div class="range-values">
+            <input id="areaMinInput" type="number" min="0" max="5000" step="50" value="200" />
+            <input id="areaMaxInput" type="number" min="0" max="5000" step="50" value="1300" />
+          </div>
+          <div class="range-labels">
+            <span>Min</span>
+            <span>Max</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Localities Section -->
+    <section class="filter-section" id="localitiesSection">
+      <div class="filter-section-header" tabindex="0" data-toggle-target="localitiesSection">
+        Localities
+        <span class="caret"></span>
+      </div>
+      <div class="filter-section-content">
+        <div class="locality-list" id="localitiesList">
+          <label><input type="checkbox" data-filter="localities" value="Kadri" /> Kadri</label>
+          <label><input type="checkbox" data-filter="localities" value="Bejai" /> Bejai</label>
+          <label><input type="checkbox" data-filter="localities" value="Surathkal" /> Surathkal</label>
+          <label><input type="checkbox" data-filter="localities" value="Ujire" /> Ujire</label>
+          <label><input type="checkbox" data-filter="localities" value="Mangalore" /> Mangalore</label>
+        </div>
+        <div class="more-localities" id="toggleMoreLocalities">+ More Localities</div>
+        <div class="locality-list" id="extraLocalities" style="display:none; margin-top: 12px;">
+          <label><input type="checkbox" data-filter="localities" value="Puttur" /> Puttur</label>
+          <label><input type="checkbox" data-filter="localities" value="Moodbidri" /> Moodbidri</label>
+          <label><input type="checkbox" data-filter="localities" value="Kankanady" /> Kankanady</label>
+          <label><input type="checkbox" data-filter="localities" value="Deralakatte" /> Deralakatte</label>
+        </div>
+      </div>
+    </section>
+  </aside>
+
+<script>
+  (() => {
+    // Helper function to create the applied filter tag element
+    function createFilterTag(filterName, filterValue) {
+      const tag = document.createElement('div');
+      tag.classList.add('applied-filter-tag');
+      tag.dataset.filter = filterName;
+      tag.dataset.value = filterValue;
+      tag.textContent = filterValue;
+
+      const removeBtn = document.createElement('span');
+      removeBtn.classList.add('remove-tag');
+      removeBtn.textContent = '×';
+      removeBtn.setAttribute('aria-label', 'Remove filter: ' + filterValue);
+      removeBtn.setAttribute('role', 'button');
+      removeBtn.tabIndex = 0;
+
+      removeBtn.addEventListener('click', () => {
+        removeFilter(filterName, filterValue);
+      });
+      removeBtn.addEventListener('keydown', e => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          removeFilter(filterName, filterValue);
+        }
+      });
+
+      tag.appendChild(removeBtn);
+
+      return tag;
+    }
+
+    // State object to track selected filters
+    const filters = {
+      budget: { min: 10000, max: 65000 },
+      propertyType: new Set(),
+      bedrooms: new Set(),
+      constructionStatus: new Set(),
+      area: { min: 200, max: 1300 },
+      localities: new Set()
+    };
+
+    // Elements references
+    const appliedFiltersContainer = document.getElementById('appliedFiltersContainer');
+    const clearAllBtn = document.getElementById('clearAllBtn');
+
+    // ===== Budget Filter Elements =====
+    const budgetMinRange = document.getElementById('budgetMin');
+    const budgetMaxRange = document.getElementById('budgetMax');
+    const budgetMinInput = document.getElementById('budgetMinInput');
+    const budgetMaxInput = document.getElementById('budgetMaxInput');
+
+    // ===== Area Filter Elements =====
+    const areaMinRange = document.getElementById('areaMin');
+    const areaMaxRange = document.getElementById('areaMax');
+    const areaMinInput = document.getElementById('areaMinInput');
+    const areaMaxInput = document.getElementById('areaMaxInput');
+
+    // ===== Tags =====
+    const propertyTypeTags = document.getElementById('propertyTypeTags');
+    const bedroomTags = document.getElementById('bedroomTags');
+    const constructionStatusTags = document.getElementById('constructionStatusTags');
+
+    // ===== Localities =====
+    const localitiesList = document.getElementById('localitiesList');
+    const extraLocalities = document.getElementById('extraLocalities');
+    const toggleMoreLocalities = document.getElementById('toggleMoreLocalities');
+
+    // --- Collapsible Sections Setup ---
+    document.querySelectorAll('.filter-section-header').forEach(header => {
+      header.addEventListener('click', () => {
+        const section = header.parentElement;
+        section.classList.toggle('collapsed');
+      });
+      header.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          const section = header.parentElement;
+          section.classList.toggle('collapsed');
+        }
+      });
+    });
+
+    // --- Budget Range Logic ---
+    function syncBudgetRanges() {
+      let min = parseInt(budgetMinRange.value);
+      let max = parseInt(budgetMaxRange.value);
+      if (min > max) {
+        // Prevent min from exceeding max
+        if (this === budgetMinRange || this === budgetMinInput) {
+          min = max;
+          budgetMinRange.value = min;
+          budgetMinInput.value = min;
+        } else {
+          max = min;
+          budgetMaxRange.value = max;
+          budgetMaxInput.value = max;
+        }
+      }
+      filters.budget.min = min;
+      filters.budget.max = max;
+
+      budgetMinRange.value = min;
+      budgetMinInput.value = min;
+      budgetMaxRange.value = max;
+      budgetMaxInput.value = max;
+
+      updateAppliedFilters();
+    }
+
+    budgetMinRange.addEventListener('input', syncBudgetRanges);
+    budgetMaxRange.addEventListener('input', syncBudgetRanges);
+    budgetMinInput.addEventListener('change', syncBudgetRanges);
+    budgetMaxInput.addEventListener('change', syncBudgetRanges);
+
+    // --- Area Range Logic ---
+    function syncAreaRanges() {
+      let min = parseInt(areaMinRange.value);
+      let max = parseInt(areaMaxRange.value);
+      if (min > max) {
+        if (this === areaMinRange || this === areaMinInput) {
+          min = max;
+          areaMinRange.value = min;
+          areaMinInput.value = min;
+        } else {
+          max = min;
+          areaMaxRange.value = max;
+          areaMaxInput.value = max;
+        }
+      }
+      filters.area.min = min;
+      filters.area.max = max;
+
+      areaMinRange.value = min;
+      areaMinInput.value = min;
+      areaMaxRange.value = max;
+      areaMaxInput.value = max;
+
+      updateAppliedFilters();
+    }
+
+    areaMinRange.addEventListener('input', syncAreaRanges);
+    areaMaxRange.addEventListener('input', syncAreaRanges);
+    areaMinInput.addEventListener('change', syncAreaRanges);
+    areaMaxInput.addEventListener('change', syncAreaRanges);
+
+    // --- Tag Click Handler ---
+    function tagClickHandler(e) {
+      const tag = e.currentTarget;
+      const filterName = tag.dataset.filter;
+      const value = tag.dataset.value;
+
+      const set = filters[filterName];
+
+      if (!set) return;
+
+      if (set.has(value)) {
+        set.delete(value);
+        tag.classList.remove('selected');
+      } else {
+        set.add(value);
+        tag.classList.add('selected');
+      }
+      updateAppliedFilters();
+    }
+
+    // Add listeners to all tags
+    [...propertyTypeTags.children].forEach(tag => {
+      tag.addEventListener('click', tagClickHandler);
+      tag.tabIndex = 0;
+      tag.addEventListener('keydown', e => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          tagClickHandler(e);
+        }
+      });
+    });
+    [...bedroomTags.children].forEach(tag => {
+      tag.addEventListener('click', tagClickHandler);
+      tag.tabIndex = 0;
+      tag.addEventListener('keydown', e => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          tagClickHandler(e);
+        }
+      });
+    });
+    [...constructionStatusTags.children].forEach(tag => {
+      tag.addEventListener('click', tagClickHandler);
+      tag.tabIndex = 0;
+      tag.addEventListener('keydown', e => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          tagClickHandler(e);
+        }
+      });
+    });
+
+    // --- Localities Checkboxes Handler ---
+    localitiesList.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
+      checkbox.addEventListener('change', e => {
+        const val = e.target.value;
+        if (e.target.checked) {
+          filters.localities.add(val);
+        } else {
+          filters.localities.delete(val);
+        }
+        updateAppliedFilters();
+      });
+    });
+    extraLocalities.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
+      checkbox.addEventListener('change', e => {
+        const val = e.target.value;
+        if (e.target.checked) {
+          filters.localities.add(val);
+        } else {
+          filters.localities.delete(val);
+        }
+        updateAppliedFilters();
+      });
+    });
+
+    // --- Toggle + More Localities ---
+    toggleMoreLocalities.addEventListener('click', () => {
+      if (extraLocalities.style.display === 'none') {
+        extraLocalities.style.display = 'block';
+        toggleMoreLocalities.textContent = '- Less Localities';
+      } else {
+        extraLocalities.style.display = 'none';
+        toggleMoreLocalities.textContent = '+ More Localities';
+      }
+    });
+
+    // --- Remove Filter by clicking on applied filter tag's x ---
+    function removeFilter(filterName, value) {
+      if (filterName === 'budget' || filterName === 'area') {
+        // reset to default
+        if (filterName === 'budget') {
+          filters.budget.min = 10000;
+          filters.budget.max = 65000;
+          budgetMinRange.value = 10000;
+          budgetMinInput.value = 10000;
+          budgetMaxRange.value = 65000;
+          budgetMaxInput.value = 65000;
+        }
+        if (filterName === 'area') {
+          filters.area.min = 200;
+          filters.area.max = 1300;
+          areaMinRange.value = 200;
+          areaMinInput.value = 200;
+          areaMaxRange.value = 1300;
+          areaMaxInput.value = 1300;
+        }
+      } else {
+        const set = filters[filterName];
+        if (set && set.has(value)) {
+          set.delete(value);
+          // Unselect the tag or uncheck checkbox
+          if (filterName === 'localities') {
+            const inputs = document.querySelectorAll(`input[type="checkbox"][data-filter="${filterName}"]`);
+            inputs.forEach(input => {
+              if (input.value === value) {
+                input.checked = false;
+              }
+            });
+          } else {
+            // For tags
+            document.querySelectorAll(`.tag[data-filter="${filterName}"]`).forEach(tag => {
+              if (tag.dataset.value === value) {
+                tag.classList.remove('selected');
+              }
+            });
+          }
+        }
+      }
+      updateAppliedFilters();
+    }
+
+    // --- Clear All Filters ---
+    clearAllBtn.addEventListener('click', () => {
+      // Reset budgets
+      filters.budget.min = 10000;
+      filters.budget.max = 65000;
+      budgetMinRange.value = 10000;
+      budgetMinInput.value = 10000;
+      budgetMaxRange.value = 65000;
+      budgetMaxInput.value = 65000;
+
+      // Reset area
+      filters.area.min = 200;
+      filters.area.max = 1300;
+      areaMinRange.value = 200;
+      areaMinInput.value = 200;
+      areaMaxRange.value = 1300;
+      areaMaxInput.value = 1300;
+
+      // Clear sets
+      ['propertyType', 'bedrooms', 'constructionStatus', 'localities'].forEach(key => {
+        filters[key].clear();
+      });
+
+      // Unselect all tags
+      document.querySelectorAll('.tag.selected').forEach(tag => {
+        tag.classList.remove('selected');
+      });
+
+      // Uncheck all checkboxes
+      document.querySelectorAll('input[type="checkbox"][data-filter="localities"]').forEach(cb => {
+        cb.checked = false;
+      });
+
+      updateAppliedFilters();
+    });
+
+    // --- Synchronize inputs' initial state ---
+    // Select default tags? none selected initially
+
+    // --- Update Applied Filters display ---
+    function updateAppliedFilters() {
+      appliedFiltersContainer.innerHTML = '';
+
+      // Budget filters - show only if not default min & max
+      if (filters.budget.min !== 10000 || filters.budget.max !== 65000) {
+        appliedFiltersContainer.appendChild(createFilterTag('budget', `Budget: ₹${filters.budget.min.toLocaleString()} - ₹${filters.budget.max.toLocaleString()}`));
+      }
+
+      // Property Type
+      filters.propertyType.forEach(value => {
+        appliedFiltersContainer.appendChild(createFilterTag('propertyType', value));
+      });
+
+      // Bedrooms
+      filters.bedrooms.forEach(value => {
+        appliedFiltersContainer.appendChild(createFilterTag('bedrooms', value));
+      });
+
+      // Construction Status
+      filters.constructionStatus.forEach(value => {
+        appliedFiltersContainer.appendChild(createFilterTag('constructionStatus', value));
+      });
+
+      // Area filter - show only if not default
+      if (filters.area.min !== 200 || filters.area.max !== 1300) {
+        appliedFiltersContainer.appendChild(createFilterTag('area', `Area: ${filters.area.min} - ${filters.area.max} sqft`));
+      }
+
+      // Localities
+      filters.localities.forEach(value => {
+        appliedFiltersContainer.appendChild(createFilterTag('localities', value));
+      });
+    }
+
+    // Initialize applied filters on page load
+    updateAppliedFilters();
+
+  })();
+</script>
+
+</body>
+</html>
