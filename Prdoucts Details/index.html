@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html lang="english">
+  <head>
+    <title>Project</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="utf-8" />
+    <meta property="twitter:card" content="summary_large_image" />
+
+    <style data-tag="reset-style-sheet">
+      html {  line-height: 1.15;}body {  margin: 0;}* {  box-sizing: border-box;  border-width: 0;  border-style: solid;  -webkit-font-smoothing: antialiased;}p,li,ul,pre,div,h1,h2,h3,h4,h5,h6,figure,blockquote,figcaption {  margin: 0;  padding: 0;}button {  background-color: transparent;}button,input,optgroup,select,textarea {  font-family: inherit;  font-size: 100%;  line-height: 1.15;  margin: 0;}button,select {  text-transform: none;}button,[type="button"],[type="reset"],[type="submit"] {  -webkit-appearance: button;  color: inherit;}button::-moz-focus-inner,[type="button"]::-moz-focus-inner,[type="reset"]::-moz-focus-inner,[type="submit"]::-moz-focus-inner {  border-style: none;  padding: 0;}button:-moz-focus,[type="button"]:-moz-focus,[type="reset"]:-moz-focus,[type="submit"]:-moz-focus {  outline: 1px dotted ButtonText;}a {  color: inherit;  text-decoration: inherit;}input {  padding: 2px 4px;}img {  display: block;}details {  display: block;  margin: 0;  padding: 0;}summary::-webkit-details-marker {  display: none;}[data-thq="accordion"] [data-thq="accordion-content"] {  max-height: 0;  overflow: hidden;  transition: max-height 0.3s ease-in-out;  padding: 0;}[data-thq="accordion"] details[data-thq="accordion-trigger"][open] + [data-thq="accordion-content"] {  max-height: 1000vh;}details[data-thq="accordion-trigger"][open] summary [data-thq="accordion-icon"] {  transform: rotate(180deg);}html { scroll-behavior: smooth  }
+    </style>
+    <style data-tag="default-style-sheet">
+      html {
+        font-family: Inter;
+        font-size: 16px;
+      }
+
+      body {
+        font-weight: 400;
+        font-style:normal;
+        text-decoration: none;
+        text-transform: none;
+        letter-spacing: normal;
+        line-height: 1.15;
+        color: var(--dl-color-theme-neutral-dark);
+        background: var(--dl-color-theme-neutral-light);
+
+        fill: var(--dl-color-theme-neutral-dark);
+      }
+    </style>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/animate.css@4.1.1/animate.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap"
+      data-tag="font"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=STIX+Two+Text:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&amp;display=swap"
+      data-tag="font"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap"
+      data-tag="font"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap"
+      data-tag="font"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap"
+      data-tag="font"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap"
+      data-tag="font"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap"
+      data-tag="font"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap"
+      data-tag="font"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap"
+      data-tag="font"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap"
+      data-tag="font"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap"
+      data-tag="font"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap"
+      data-tag="font"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap"
+      data-tag="font"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap"
+      data-tag="font"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap"
+      data-tag="font"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap"
+      data-tag="font"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap"
+      data-tag="font"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap"
+      data-tag="font"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap"
+      data-tag="font"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap"
+      data-tag="font"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap"
+      data-tag="font"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap"
+      data-tag="font"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap"
+      data-tag="font"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap"
+      data-tag="font"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap"
+      data-tag="font"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap"
+      data-tag="font"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap"
+      data-tag="font"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap"
+      data-tag="font"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap"
+      data-tag="font"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap"
+      data-tag="font"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap"
+      data-tag="font"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap"
+      data-tag="font"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap"
+      data-tag="font"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap"
+      data-tag="font"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap"
+      data-tag="font"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap"
+      data-tag="font"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap"
+      data-tag="font"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap"
+      data-tag="font"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap"
+      data-tag="font"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap"
+      data-tag="font"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap"
+      data-tag="font"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap"
+      data-tag="font"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap"
+      data-tag="font"
+    />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/@teleporthq/teleport-custom-scripts/dist/style.css"
+    />
+  </head>
+  <body>
+    <link rel="stylesheet" href="./style.css" />
+    <div>
+      <link href="./index.css" rel="stylesheet" />
+
+      <div class="prdoucts-details-container">
+        <div class="prdoucts-details-prdoucts-details">
+          <img
+            src="public/bigdeallogo0113702-mngf-200h.png"
+            alt="BIGDEALLOGO0113702"
+            class="prdoucts-details-bigdeallogo0111"
+          />
+          <div class="prdoucts-details-scheduleform">
+            <img
+              src="public/rectangle514161-2kfh-500w.png"
+              alt="Rectangle514161"
+              class="prdoucts-details-rectangle51"
+            />
+            <div class="prdoucts-details-form">
+              <div class="prdoucts-details-input1">
+                <span class="prdoucts-details-text10 Smalltext">Name</span>
+                <div class="prdoucts-details-field1">
+                  <span class="prdoucts-details-text11 Smalltext">Jane</span>
+                </div>
+              </div>
+              <div class="prdoucts-details-input2">
+                <span class="prdoucts-details-text12 Smalltext">
+                  Phone Number
+                </span>
+                <div class="prdoucts-details-field2">
+                  <span class="prdoucts-details-text13 Smalltext">
+                    Phone Number
+                  </span>
+                </div>
+              </div>
+              <div class="prdoucts-details-input3">
+                <span class="prdoucts-details-text14 Smalltext">Date</span>
+                <div class="prdoucts-details-field3">
+                  <span class="prdoucts-details-text15 Smalltext">
+                    dd/mm/yyyy
+                  </span>
+                </div>
+              </div>
+              <div class="prdoucts-details-input4">
+                <span class="prdoucts-details-text16 Smalltext">
+                  Your message
+                </span>
+                <div class="prdoucts-details-field4">
+                  <span class="prdoucts-details-text17 Smalltext">
+                    Enter your question or message
+                  </span>
+                </div>
+              </div>
+              <button class="prdoucts-details-button">
+                <span class="prdoucts-details-text18">Schedule a Visit</span>
+              </button>
+            </div>
+            <div class="prdoucts-details-input5">
+              <span class="prdoucts-details-text19 Smalltext">Time</span>
+              <div class="prdoucts-details-field5">
+                <span class="prdoucts-details-text20 Smalltext">00:00</span>
+              </div>
+            </div>
+          </div>
+          <div class="prdoucts-details-header">
+            <div class="prdoucts-details-navigation-pill-list">
+              <div class="prdoucts-details-navigation-pill1">
+                <span class="prdoucts-details-text21">Products</span>
+              </div>
+              <div class="prdoucts-details-navigation-pill2">
+                <span class="prdoucts-details-text22">Solutions</span>
+              </div>
+              <div class="prdoucts-details-navigation-pill3">
+                <span class="prdoucts-details-text23">Community</span>
+              </div>
+              <div class="prdoucts-details-navigation-pill4">
+                <span class="prdoucts-details-text24">Resources</span>
+              </div>
+              <div class="prdoucts-details-navigation-pill5">
+                <span class="prdoucts-details-text25">Pricing</span>
+              </div>
+              <div class="prdoucts-details-navigation-pill6">
+                <span class="prdoucts-details-text26">Contact</span>
+              </div>
+              <div class="prdoucts-details-navigation-pill7">
+                <span class="prdoucts-details-text27">Link</span>
+              </div>
+            </div>
+          </div>
+          <div class="prdoucts-details-houseview">
+            <img
+              src="public/rectangle413668-ydn-600h.png"
+              alt="Rectangle413668"
+              class="prdoucts-details-rectangle41"
+            />
+            <img
+              src="public/rectangle423681-fvk-200h.png"
+              alt="Rectangle423681"
+              class="prdoucts-details-rectangle42"
+            />
+            <img
+              src="public/rectangle463691-lnj-200h.png"
+              alt="Rectangle463691"
+              class="prdoucts-details-rectangle46"
+            />
+            <img
+              src="public/rectangle473691-gj3a-200h.png"
+              alt="Rectangle473691"
+              class="prdoucts-details-rectangle47"
+            />
+            <img
+              src="public/rectangle483691-27eq-200h.png"
+              alt="Rectangle483691"
+              class="prdoucts-details-rectangle48"
+            />
+            <span class="prdoucts-details-text28">1800 Sq.ft</span>
+            <span class="prdoucts-details-text29">Area</span>
+            <span class="prdoucts-details-text30">Parking</span>
+            <span class="prdoucts-details-text31">Facing</span>
+            <span class="prdoucts-details-text32">West</span>
+            <span class="prdoucts-details-text33">Balcony</span>
+            <span class="prdoucts-details-text34">Furnished Status</span>
+            <span class="prdoucts-details-text35">Semi-furnished</span>
+            <span class="prdoucts-details-text36">Age of Construction</span>
+            <span class="prdoucts-details-text37">Less than 2 year</span>
+            <span class="prdoucts-details-text38">Shaheer Sweet Home</span>
+            <img
+              src="public/rectangle493781-gbwn-500w.png"
+              alt="Rectangle493781"
+              class="prdoucts-details-rectangle49"
+            />
+            <span class="prdoucts-details-text39">10+</span>
+            <span class="prdoucts-details-text40">Configuration</span>
+            <span class="prdoucts-details-text41">2 BHK</span>
+            <img
+              src="public/rectangle524231-k1wm-200h.png"
+              alt="Rectangle524231"
+              class="prdoucts-details-rectangle52"
+            />
+            <img
+              src="public/share4231-15vp.svg"
+              alt="Share4231"
+              class="prdoucts-details-share"
+            />
+          </div>
+          <div class="prdoucts-details-moredetails">
+            <span class="prdoucts-details-text42">More Details</span>
+            <span class="prdoucts-details-text43">Price</span>
+            <span class="prdoucts-details-text44">Address</span>
+            <span class="prdoucts-details-text45">Landmarks</span>
+            <span class="prdoucts-details-text46">Type of Ownership</span>
+            <span class="prdoucts-details-text47">Additional Room</span>
+            <span class="prdoucts-details-text48">$ 1 cr</span>
+            <span class="prdoucts-details-text49">
+              Kankanady Gate Building, Kankanady, Mangalore
+            </span>
+            <span class="prdoucts-details-text50">Gd Edu Tech</span>
+            <span class="prdoucts-details-text51">Freehold</span>
+            <span class="prdoucts-details-text52">Store room</span>
+            <span class="prdoucts-details-text53">More information</span>
+            <img
+              src="public/keyboardarrowup3911-ptyi.svg"
+              alt="keyboardarrowup3911"
+              class="prdoucts-details-keyboardarrowup1"
+            />
+          </div>
+          <div class="prdoucts-details-frame1321316142">
+            <span class="prdoucts-details-text54">Description</span>
+            <span class="prdoucts-details-text55">
+              People who viewed this property also liked
+            </span>
+            <span class="prdoucts-details-text56">View More</span>
+            <img
+              src="public/keyboardarrowup3971-fi6u.svg"
+              alt="keyboardarrowup3971"
+              class="prdoucts-details-keyboardarrowup2"
+            />
+          </div>
+          <div class="prdoucts-details-products">
+            <div class="prdoucts-details-card1">
+              <div class="prdoucts-details-image1">
+                <img src="public/bigdeallogo0113702-mngf-200h.png" alt="Modern Family Villa">
+              </div>
+              <div class="prdoucts-details-copy1">
+                
+                <span class="prdoucts-details-text57">Modern Family Villa</span>
+              </div>
+              <div class="prdoucts-details-productcardicons1">
+                <div class="prdoucts-details-lowericons1">
+                  <div class="prdoucts-details-balconyicon1">
+                    <img
+                      src="public/facadeterracesvgrepocom14161-ash.svg"
+                      alt="facadeterracesvgrepocom14161"
+                      class="prdoucts-details-facadeterracesvgrepocom11"
+                    />
+                  </div>
+                  <div class="prdoucts-details-furnitureicon1">
+                    <span class="prdoucts-details-text58">Semi-furnished</span>
+                    <img
+                      src="public/furnituresvgrepocom14161-t7w.svg"
+                      alt="furnituresvgrepocom14161"
+                      class="prdoucts-details-furnituresvgrepocom11"
+                    />
+                  </div>
+                </div>
+                <div class="prdoucts-details-uppericon1">
+                  <div class="prdoucts-details-homeicon1">
+                    <div class="prdoucts-details-homeicon2">
+                      <img
+                        src="public/vector4161-ctjj.svg"
+                        alt="Vector4161"
+                        class="prdoucts-details-vector10"
+                      />
+                      <img
+                        src="public/vector4161-rjmj.svg"
+                        alt="Vector4161"
+                        class="prdoucts-details-vector11"
+                      />
+                    </div>
+                    <span class="prdoucts-details-text59">4BHK</span>
+                  </div>
+                  <div class="prdoucts-details-parkingicon1">
+                    <img
+                      src="public/vector4161-885g.svg"
+                      alt="Vector4161"
+                      class="prdoucts-details-vector12"
+                    />
+                  </div>
+                  <div class="prdoucts-details-sqicon1">
+                    <span class="prdoucts-details-text60">4 sq. ft.</span>
+                    <img
+                      src="public/squaremeasumentsvgrepocom14161-uiqt.svg"
+                      alt="squaremeasumentsvgrepocom14161"
+                      class="prdoucts-details-squaremeasumentsvgrepocom11"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="prdoucts-details-card2">
+              <div class="prdoucts-details-image2"></div>
+              <div class="prdoucts-details-copy2">
+                <span class="prdoucts-details-text61">Modern Family Villa</span>
+              </div>
+              <div class="prdoucts-details-productcardicons2">
+                <div class="prdoucts-details-lowericons2">
+                  <div class="prdoucts-details-balconyicon2">
+                    <img
+                      src="public/facadeterracesvgrepocom14161-whw8.svg"
+                      alt="facadeterracesvgrepocom14161"
+                      class="prdoucts-details-facadeterracesvgrepocom12"
+                    />
+                  </div>
+                  <div class="prdoucts-details-furnitureicon2">
+                    <span class="prdoucts-details-text62">Semi-furnished</span>
+                    <img
+                      src="public/furnituresvgrepocom14161-m4ht.svg"
+                      alt="furnituresvgrepocom14161"
+                      class="prdoucts-details-furnituresvgrepocom12"
+                    />
+                  </div>
+                </div>
+                <div class="prdoucts-details-uppericon2">
+                  <div class="prdoucts-details-homeicon3">
+                    <div class="prdoucts-details-homeicon4">
+                      <img
+                        src="public/vector4161-qgn9.svg"
+                        alt="Vector4161"
+                        class="prdoucts-details-vector13"
+                      />
+                      <img
+                        src="public/vector4161-3u1g.svg"
+                        alt="Vector4161"
+                        class="prdoucts-details-vector14"
+                      />
+                    </div>
+                    <span class="prdoucts-details-text63">4BHK</span>
+                  </div>
+                  <div class="prdoucts-details-parkingicon2">
+                    <img
+                      src="public/vector4162-jit.svg"
+                      alt="Vector4162"
+                      class="prdoucts-details-vector15"
+                    />
+                  </div>
+                  <div class="prdoucts-details-sqicon2">
+                    <span class="prdoucts-details-text64">4 sq. ft.</span>
+                    <img
+                      src="public/squaremeasumentsvgrepocom14162-gduc.svg"
+                      alt="squaremeasumentsvgrepocom14162"
+                      class="prdoucts-details-squaremeasumentsvgrepocom12"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="prdoucts-details-card3">
+              <div class="prdoucts-details-image3"></div>
+              <div class="prdoucts-details-copy3">
+                <span class="prdoucts-details-text65">
+                  Luxury City Apartment
+                </span>
+              </div>
+              <div class="prdoucts-details-productcardicons3">
+                <div class="prdoucts-details-lowericons3">
+                  <div class="prdoucts-details-balconyicon3">
+                    <img
+                      src="public/facadeterracesvgrepocom14162-r3z6.svg"
+                      alt="facadeterracesvgrepocom14162"
+                      class="prdoucts-details-facadeterracesvgrepocom13"
+                    />
+                  </div>
+                  <div class="prdoucts-details-furnitureicon3">
+                    <span class="prdoucts-details-text66">Semi-furnished</span>
+                    <img
+                      src="public/furnituresvgrepocom14162-c2nq.svg"
+                      alt="furnituresvgrepocom14162"
+                      class="prdoucts-details-furnituresvgrepocom13"
+                    />
+                  </div>
+                </div>
+                <div class="prdoucts-details-uppericon3">
+                  <div class="prdoucts-details-homeicon5">
+                    <div class="prdoucts-details-homeicon6">
+                      <img
+                        src="public/vector4162-cw6v.svg"
+                        alt="Vector4162"
+                        class="prdoucts-details-vector16"
+                      />
+                      <img
+                        src="public/vector4162-93yg.svg"
+                        alt="Vector4162"
+                        class="prdoucts-details-vector17"
+                      />
+                    </div>
+                    <span class="prdoucts-details-text67">4BHK</span>
+                  </div>
+                  <div class="prdoucts-details-parkingicon3">
+                    <img
+                      src="public/vector4162-7z7s.svg"
+                      alt="Vector4162"
+                      class="prdoucts-details-vector18"
+                    />
+                  </div>
+                  <div class="prdoucts-details-sqicon3">
+                    <span class="prdoucts-details-text68">4 sq. ft.</span>
+                    <img
+                      src="public/squaremeasumentsvgrepocom14162-9u2.svg"
+                      alt="squaremeasumentsvgrepocom14162"
+                      class="prdoucts-details-squaremeasumentsvgrepocom13"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="prdoucts-details-navigation-footer">
+            <div class="prdoucts-details-items1">
+              <span class="prdoucts-details-text69">Navigation</span>
+              <span class="prdoucts-details-text70 Smalltext">Home</span>
+              <span class="prdoucts-details-text71 Smalltext">Home</span>
+              <span class="prdoucts-details-text72 Smalltext">Home</span>
+            </div>
+            <span class="prdoucts-details-text73 Smalltext">
+              © 2025 Big Deal Real Estate
+            </span>
+            <span class="prdoucts-details-text74 Smalltext">Developed by</span>
+            <span class="prdoucts-details-text75">
+              Get the latest information
+            </span>
+            <div class="prdoucts-details-items2">
+              <span class="prdoucts-details-text76">Contact</span>
+              <span class="prdoucts-details-text77 Smalltext">
+                +918197458962
+              </span>
+              <span class="prdoucts-details-text78 Smalltext">
+                info@bigdeal.com
+              </span>
+              <span class="prdoucts-details-text79 Smalltext">
+                Kankanady Gate, building, Mangalore
+              </span>
+            </div>
+            <div class="prdoucts-details-social-icons">
+              <button class="prdoucts-details-buttons-icon1">
+                <div class="prdoucts-details-icon1">
+                  <img
+                    src="public/icon1399-j7e.svg"
+                    alt="Icon1399"
+                    class="prdoucts-details-icon2"
+                  />
+                </div>
+              </button>
+              <button class="prdoucts-details-buttons-icon2">
+                <div class="prdoucts-details-icon3">
+                  <img
+                    src="public/icon1400-9pe.svg"
+                    alt="Icon1400"
+                    class="prdoucts-details-icon4"
+                  />
+                </div>
+              </button>
+              <button class="prdoucts-details-buttons-icon3">
+                <div class="prdoucts-details-icon5">
+                  <img
+                    src="public/icon1400-z2mi.svg"
+                    alt="Icon1400"
+                    class="prdoucts-details-icon6"
+                  />
+                </div>
+              </button>
+              <button class="prdoucts-details-buttons-icon4">
+                <div class="prdoucts-details-icon7">
+                  <img
+                    src="public/icon1401-9iui.svg"
+                    alt="Icon1401"
+                    class="prdoucts-details-icon8"
+                  />
+                </div>
+              </button>
+            </div>
+            <img
+              src="public/divider1401-9dnp.svg"
+              alt="Divider1401"
+              class="prdoucts-details-divider1"
+            />
+            <img
+              src="public/divider2701-4vld.svg"
+              alt="Divider2701"
+              class="prdoucts-details-divider2"
+            />
+            <img
+              src="public/bigdeallogo0112707-cbpg-200h.png"
+              alt="BIGDEALLOGO0112707"
+              class="prdoucts-details-bigdeallogo0112"
+            />
+            <span class="prdoucts-details-text80 Smalltext">
+              Big Deal Real Estate is your trusted partner in buying, selling,
+              and investing in properties. We focus on transparency,
+              professionalism, and making your real estate journey simple and
+              hassle-free.
+            </span>
+            <div class="prdoucts-details-emailfield">
+              <img
+                src="public/rectangle272769-er0r-200w.png"
+                alt="Rectangle272769"
+                class="prdoucts-details-rectangle271"
+              />
+              <img
+                src="public/send2769-6sum.svg"
+                alt="send2769"
+                class="prdoucts-details-send"
+              />
+              <div class="prdoucts-details-input-field">
+                <input
+                  type="text"
+                  placeholder="Email address"
+                  class="prdoucts-details-input6"
+                />
+              </div>
+            </div>
+          </div>
+          <div class="prdoucts-details-connectwithourexperts">
+            <div class="prdoucts-details-contactbtn">
+              <img
+                src="public/rectangle274241-q6pj-200h.png"
+                alt="Rectangle274241"
+                class="prdoucts-details-rectangle272"
+              />
+              <img
+                src="public/rectangle284241-l2r2-200h.png"
+                alt="Rectangle284241"
+                class="prdoucts-details-rectangle28"
+              />
+              <span class="prdoucts-details-text81">Contact Us Now</span>
+              <img
+                src="public/vector4241-p706.svg"
+                alt="Vector4241"
+                class="prdoucts-details-vector19"
+              />
+            </div>
+            <img
+              src="public/image104192-rytv-700h.png"
+              alt="image104192"
+              class="prdoucts-details-image10"
+            />
+            <img
+              src="public/rectangle254192-kff-200h.png"
+              alt="Rectangle254192"
+              class="prdoucts-details-rectangle25"
+            />
+            <span class="prdoucts-details-text82">
+              Our team is here to help you find your perfect home.
+            </span>
+            <img
+              src="public/line14192-38g.svg"
+              alt="Line14192"
+              class="prdoucts-details-line1"
+            />
+            <span class="prdoucts-details-text83">
+              Connect With Our Experts
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
