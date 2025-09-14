@@ -4,11 +4,14 @@ const dots = document.querySelectorAll('.dot');
 
 function showSlide(index) {
   slides.forEach((slide, i) => {
-    slide.classList.remove('active', 'next');
+    slide.classList.remove('active', 'next', 'prev');
+    
     if (i === index) {
       slide.classList.add('active');
-    } else if (i === index + 1) {
+    } else if (i === (index + 1) % slides.length) {
       slide.classList.add('next');
+    } else if (i === (index - 1 + slides.length) % slides.length) {
+      slide.classList.add('prev');
     }
   });
 
@@ -17,12 +20,32 @@ function showSlide(index) {
   });
 }
 
-function autoScrollCarousel(interval = 3000) {
+function nextSlide() {
+  currentSlide = (currentSlide + 1) % slides.length;
+  showSlide(currentSlide);
+}
+
+function prevSlide() {
+  currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+  showSlide(currentSlide);
+}
+
+function autoScrollCarousel(interval = 4000) {
   setInterval(() => {
-    currentSlide = (currentSlide + 1) % slides.length;
-    showSlide(currentSlide);
+    nextSlide();
   }, interval);
 }
+
+// Add click handlers to dots
+dots.forEach((dot, index) => {
+  dot.addEventListener('click', () => {
+    currentSlide = index;
+    showSlide(currentSlide);
+  });
+});
+
+// Initialize the carousel
+showSlide(currentSlide);
 
 // Start auto-scrolling the carousel
 autoScrollCarousel();
@@ -318,5 +341,27 @@ document.addEventListener('DOMContentLoaded', () => {
   setupMoreLocalities();
   updateAppliedFiltersDisplay();
 });
+
+
+
+
+
+document.addEventListener('DOMContentLoaded', function() {
+  const viewMore = document.querySelector('.view-more');
+  const description = document.querySelector('.property-desc .pdesc');
+  
+  viewMore.addEventListener('click', function(e) {
+    e.preventDefault();
+
+    if (description.classList.contains('expanded')) {
+      description.classList.remove('expanded');
+      viewMore.innerHTML = 'View More <span><img src="img/icon/parrowdown.svg" alt="arrow down" class="pdarrow"></span>';
+    } else {
+      description.classList.add('expanded');
+      viewMore.innerHTML = 'View Less <span><img src="img/icon/parrowdown.svg" alt="arrow down" class="pdarrow"></span>';
+    }
+  });
+});
+
 
 
