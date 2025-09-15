@@ -98,9 +98,9 @@
 
    
 
-    <div class="d-flex row ">
+    <div class="d-flex row blackprop">
         <div class="col-md-4">
-          <img src="img/black_hero.png" alt="prop1" class="blackprop">
+          <img src="img/black_hero.png" alt="prop1" class="">
         </div>
         <div class="inter col-md-7">
           <div class="small-text">Check out</div>
@@ -170,11 +170,42 @@
             </div>
           </div>
         </div>
+
+        
+        <div class="carousel-slide ">
+          <img src="img/slider1/DHP4.png" alt="House 2" class="imgs">
+           <div class="info-box">
+            <div class="info-top">
+              <div class="info-item" title="4 Bedrooms" aria-label="4 bedrooms">
+              <img src="img/icon/home.svg" class="svg">
+                4 BHK
+              </div>
+              <div class="info-item" title="4 Parking Spots" aria-label="4 parking spots">
+                <img src="img/icon/park.svg" class="svg">
+                4 Cars
+              </div>
+              <div class="info-item" title="4 Square Feet" aria-label="4 square feet">
+                <img src="img/icon/sqft.svg" class="svg">
+                4 sq.ft.
+              </div>
+            </div>
+            <div class="info-bottom">
+              <div class="info-item" title="4 Floors" aria-label="4 floors">
+                <img src="img/icon/terrace.svg" class="svg">            4 Floors
+              </div>
+              <div class="info-item" title="Semi-furnished" aria-label="semi furnished">
+              <img src="img/icon/sofa.svg" class="svg">
+                Semi-furnished
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
   <!-- Navigation dots -->
       <div class="carousel-dots">
         <span class="dot active" onclick="showSlide(0)"></span>
         <span class="dot" onclick="showSlide(1)"></span>
+        <span class="dot" onclick="showSlide(2)"></span>
         
       </div>
   
@@ -256,7 +287,7 @@
                     <div class="card-body">
                         <div class="card-title">Modern Family Villa</div>
                         <div class="property-attrs">
-                            <div class="property-attr"><img src="img/icon/home_dark.svg" class="svg" > 4BHK</div>
+                            <div class="property-attr"><img src="img/icon/home_dark.svg" class="svg" > 4 BHK</div>
                             <div class="property-attr"><img src="img/icon/park_dark.svg" class="svg" > 4</div>
                             <div class="property-attr"><img src="img/icon/sqft_dark.svg" class="svg" > 4 sq. ft.</div>
                             <div class="property-attr"><img src="img/icon/terrace_dark.svg" class="svg" > 4</div>
@@ -306,58 +337,65 @@
 
  
        
-            <div class="container py-4 ">
-
+    <div class="container">
+      <div class="location-section">
                 <div class="location-title">
                 Prime Locations
             </div>
             <div class="location-subtitle">
               Trending areas you can’t miss    
             </div>
-        <div class="row g-3 loc">
-            <!-- First Row: Bengaluru (big), Mysuru -->
-            <div class="col-md-8">
-                <div class="city-card city-card-lg">
-                    <img src="img/loc/blore.png" alt="Bengaluru">
-                    <div class="city-label">Bengaluru</div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="city-card city-card-lg">
-                    <img src="img/loc/mysore.png" alt="Mysuru">
-                    <div class="city-label">Mysuru</div>
-                </div>
-            </div>
-            <!-- Second Row: Mangaluru, Chikkamagaluru, Kasaragod -->
-            <div class="col-md-4">
-                <div class="city-card city-card-md">
-                    <img src="img/loc/mlore.png" alt="Mangaluru">
-                    <div class="city-label">Mangaluru</div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="city-card city-card-md">
-                    <img src="img/loc/chikm.png" alt="Chikkamagaluru">
-                    <div class="city-label">Chikkamagaluru</div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="city-card city-card-md">
-                    <img src="img/loc/kgd.png" alt="Kasaragod">
-                    <div class="city-label">Kasaragod</div>
-                </div>
+       <div class="container">
+    <div class="row ">
+    <div class="loc">
+        <!-- First Row -->
+        <div class="col-md-7">
+            <div class="city-card city-card-lg">
+                <img src="img/loc/blore.png" alt="Bengaluru">
+                <div class="city-label">Bengaluru</div>
             </div>
         </div>
+        <div class="col-md-4">
+            <div class="city-card city-card-lg">
+                <img src="img/loc/mysore.png" alt="Mysuru">
+                <div class="city-label">Mysuru</div>
+            </div>
+        </div>
+
+        <!-- Second Row -->
+        <div class="col-md-3">
+            <div class="city-card city-card-md">
+                <img src="img/loc/mlore.png" alt="Mangaluru">
+                <div class="city-label">Mangaluru</div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="city-card city-card-md">
+                <img src="img/loc/chikm.png" alt="Chikkamagaluru">
+                <div class="city-label">Chikkamagaluru</div>
+            </div>
+        </div>
+        <div class="col-md-5">
+            <div class="city-card city-card-md">
+                <img src="img/loc/kgd.png" alt="Kasaragod">
+                <div class="city-label">Kasaragod</div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+    </div>
     </div>
 
 
       <!-- Apartment     -->
-      <div class="container py-4 ">
+      <div class="container  ">
 
                 <div class="house-title">
                 Apartments, Villas and more
             </div>
-            <div class="row apt">
+            <div class="row apt  ">
               <div class="col-md-3">
                 <img src="img/prop/apt.png" alt="Residential">
                 <p class="figtree">Residential</p>
@@ -384,7 +422,7 @@
 
 
  <!-- contact  -->
-    <section class="contact-section container">
+    <section class="contact-section ">
       <h2 class="blac2 col-md-6 sfpro">
         Connect With Our Experts
       </h2>
@@ -475,7 +513,8 @@
   <!-- about section  -->
 
 
-    <section class="about-section container">
+    <section class="container ">
+      <div class="about-section">
   <div class="about-image">
     <img src="img/prop/bhouse2.png" alt="aboutimg" />
   </div>
@@ -491,15 +530,28 @@
       View More <span>→</span>
     </button>
     <div class="about-stats">
-      <div><span class="stat-number">100+</span><br>Project</div>
-      <div><span class="stat-number">100+</span><br>Project</div>
-      <div><span class="stat-number">100+</span><br>Project</div>
-      <div><span class="stat-number">100+</span><br>Project</div>
+       <div class="stat-item">
+                <span class="stat-number">100+</span><br>
+                <span class="stat-label">Project</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-number">100+</span><br>
+                <span class="stat-label" >Project</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-number" >100+</span><br>
+                <span class="stat-label" >Project</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-number" >100+</span><br>
+                <span class="stat-label" >Project</span>
+              </div>
     </div>
+  </div>
   </div>
     </section>
 
-<section class="blog-section">
+<section class="blog-section ">
   <div class="section-header">
     <h2>Explore our latest blogs for<br>real estate insights</h2>
     <button class="view-all-btn">View all <span>→</span></button>
@@ -550,7 +602,7 @@
 <section class="container faq">
   <div class="row">
 
-    <div class="col-md-4">
+    <div class="col-md-5">
       <button class="btn-faq">FAQs</button>
       <h3>
         Your <span style="color: red;">questions</span> <br> answered
@@ -575,7 +627,7 @@
             <img src="img/icon/arrowdown.svg" alt="arrow down" class="farrow down">
           </div>
           <div class="FaqQ-content">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt
+            <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt</span>
           </div>
         </div>
         <div class="FaqQ-item">
@@ -603,6 +655,10 @@
   </div>
 </section>
 
+
+
+
+<script src="https://hammerjs.github.io/dist/hammer.js"></script>
 
  
 <footer class="container">
@@ -643,25 +699,16 @@
 
       <div class=" col-md-3 footer-column">
           <h3>Get the latest information</h3>
-        <div id="search-wrapper">
+           <div id="search-wrapper">
+            <input type="email" id="search" placeholder="Email address">
+            <button id="search-button"><img src="img/icon/sendw.png" alt="send"></button>
+          </div>
+      </div>
 
-  
-<input type="email" id="search" placeholder="Email address">
-<button id="search-button"><img src="img/icon/sendw.png" alt="send"></button>
-
-  </div>
-  </div>
-
-  <hr class="section-divider">
-
-   <div class="col-md-12 d-flex justify-content-between align-items-center">
-
-            <p >
-   &copy;<script>document.write(new Date().getFullYear());</script> Big Deal Real Estate
- </p>
- <p >
-   Developed by
- </p>
+    <hr class="section-divider">
+      <div class="col-md-12 d-flex justify-content-between align-items-center">
+      <p >&copy;<script>document.write(new Date().getFullYear());</script> Big Deal Real Estate </p>
+ <p >   Developed by </p>
           </div>
 
 </footer>

@@ -4,26 +4,27 @@ const dots = document.querySelectorAll('.dot');
 
 function showSlide(index) {
   slides.forEach((slide, i) => {
-    slide.classList.remove('active', 'next', 'prev');
-    
+    slide.classList.remove('active', 'next');
     if (i === index) {
       slide.classList.add('active');
     } else if (i === (index + 1) % slides.length) {
       slide.classList.add('next');
-    } else if (i === (index - 1 + slides.length) % slides.length) {
-      slide.classList.add('prev');
     }
   });
-
   dots.forEach((dot, i) => {
     dot.classList.toggle('active', i === index);
   });
 }
 
-function nextSlide() {
-  currentSlide = (currentSlide + 1) % slides.length;
-  showSlide(currentSlide);
-}
+// Next slide click handler
+slides.forEach((slide, i) => {
+  slide.onclick = () => {
+    if (slide.classList.contains('next')) {
+      currentSlide = (currentSlide + 1) % slides.length;
+      showSlide(currentSlide);
+    }
+  };
+});
 
 function prevSlide() {
   currentSlide = (currentSlide - 1 + slides.length) % slides.length;
@@ -43,6 +44,12 @@ dots.forEach((dot, index) => {
     showSlide(currentSlide);
   });
 });
+
+showSlide(currentSlide);
+setInterval(() => {
+  currentSlide = (currentSlide + 1) % slides.length;
+  showSlide(currentSlide);
+}, 4000);
 
 // Initialize the carousel
 showSlide(currentSlide);
