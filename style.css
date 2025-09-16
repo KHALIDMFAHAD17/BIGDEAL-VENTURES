@@ -1858,8 +1858,8 @@ max-width: 400px;
       padding: 35px;
       display: flex;
       flex-direction: column;
-      height: auto;
-     margin-bottom: 150px;
+      height: 100%;
+      margin-bottom: 0;
       overflow-y: auto;
     }
 
@@ -1927,9 +1927,12 @@ max-width: 400px;
       color: #333;
     }
     .filter-section-header {
-      font-weight: 600;
-      font-size: 16px;
-      color: #333;
+        font-weight: 400;
+        font-style: Regular;
+        font-size: 12px;
+        line-height: 150%;
+        letter-spacing: 0%;
+      color: #000000;
       display: flex;
       justify-content: space-between;
       cursor: pointer;
@@ -1975,11 +1978,13 @@ max-width: 400px;
       gap: 10px;
     }
     .tag {
-      padding: 6px 14px;
-      background: #fbedeb;
-      color: #e14c4c;
-      font-weight: 500;
-      font-size: 13px;
+      padding:8px;
+      background: #FFF3F3;color: #000000;
+        font-weight: 200;
+        font-style: ExtraLight;
+        font-size: 10px;
+        line-height: 150%;
+        letter-spacing: 0%;
       border-radius: 20px;
       cursor: pointer;
       user-select: none;
@@ -1991,22 +1996,17 @@ max-width: 400px;
       background: #e14c4c;
       color: white;
     }
-    .tag .add-icon {
-      font-weight: 600;
-      font-size: 14px;
-      margin-left: 6px;
-      user-select: none;
+    .tag .add-icon { 
+      font-size: 15px;
+      
+      padding: 0px 3px;
+
     }
     .tag.selected .add-icon {
       display: none;
     }
 
-    /* Bedrooms tags smaller */
-    .bedroom-tags .tag {
-      padding: 5px 12px;
-      font-size: 12px;
-      font-weight: 600;
-    }
+ 
     .bedroom-tags .tag.selected {
       background: #e14c4c;
       color: white;
@@ -2014,43 +2014,90 @@ max-width: 400px;
 
     /* Range slider container */
     .range-slider-container {
-      margin-top: 8px;
-    }
-    .range-labels {
-      display: flex;
-      justify-content: space-between;
-      font-size: 12px;
-      color: #999;
-      margin-top: 4px;
-      user-select: none;
+      margin-top:16px;
     }
     .double-range {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin-top: 8px;
-    }
-    .double-range input[type="range"] {
-      flex: 1;
-      pointer-events: auto;
-    }
-    .range-values {
-      display: flex;
-      gap: 8px;
-      margin-top: 8px;
-    }
-    .range-values input[type="number"] {
-      width: 70px;
-      padding: 6px 8px;
-      font-size: 13px;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-      user-select: none;
-    }
-    .range-values input[type="number"]:focus {
-      outline-color: #e14c4c;
-      border-color: #e14c4c;
-    }
+    position: relative;
+    width: 300px;
+    height: 40px;
+  }
+  .double-range input[type="range"] {
+    position: absolute;
+    left: 0;
+    top: 15px;
+    width: 100%;
+    pointer-events: all;
+    -webkit-appearance: none;
+    background: transparent;
+    margin: 0;
+    padding: 0;
+  }
+  /* Remove default appearance */
+  .double-range input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+  }
+  .double-range input[type="range"]::-moz-range-thumb {
+    -moz-appearance: none;
+  }
+  /* Track */
+  .double-range input[type="range"]::-webkit-slider-runnable-track {
+    height: 6px;
+    background: #ddd;
+    border-radius: 3px;
+  }
+  .double-range input[type="range"]::-moz-range-track {
+    height: 6px;
+    background: #ddd;
+    border-radius: 3px;
+  }
+  /* Thumbs */
+  .double-range input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    height: 10px;
+    width: 10px;
+    background: #050505;
+    border-radius: 50%;
+    cursor: pointer;
+    margin-top: -5px;
+    position: relative;
+    z-index: 3;
+  }
+  .double-range input[type="range"]::-moz-range-thumb {
+    height: 10px;
+    width: auto;
+    background: #0e0e0e;
+    border-radius: 50%;
+    cursor: pointer;
+    position: relative;
+    z-index: 3;
+  }
+  /* Colored range track between thumbs */
+  .slider-track {
+    position: absolute;
+    height: 6px;
+    top: 17px;
+    left: 0;
+    right: 0;
+    background: #ddd;
+    border-radius: 3px;
+    z-index: 1;
+  }
+  .slider-range {
+    position: absolute;
+    height: 3px;
+    top: 17px;
+    background: #050505;
+    border-radius: 3px;
+    z-index: 2;
+  }
+  /* Labels */
+  .range-labels {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    margin-top: 8px;
+    user-select: none;
+  }
 
     /* Checkboxes */
     .locality-list {
@@ -2325,12 +2372,10 @@ padding: 20px;
   border-radius: 12px;
   box-shadow: 5px 5px 5px rgba(16, 16, 16, 0.1);
   overflow: hidden;
+  height:fit-content;
 }
 
 .property-image {
-  width:300px;
-  height: auto;
-  padding: 10px 10px;
   border-radius: 15px;
   object-fit: cover;
  border-radius: 16px;
@@ -2361,19 +2406,9 @@ padding: 20px;
   border-right: 1px solid #ccc;
    padding-right: 1rem;
 }
-.property-details {
-  display: flex;
-  gap: 1.5rem;
-  font-weight: 600;
-  color: #222;
-  margin: 0.5rem 0;
-}
 
 .property-actions {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%; /* adjust as needed for your page */
+  display: flex; justify-content: space-between; align-items: center; max-width: 600px;
  
 }
 
@@ -2393,8 +2428,12 @@ padding: 20px;
 }
 
 .property-time{
-  font-size: 14px;
-  color: #333;
+font-weight: 500;
+font-style: Medium;
+font-size: 12px;
+line-height: 100%;
+letter-spacing: 0%;
+
 }
 
 .btn-grp {
@@ -2475,7 +2514,11 @@ display: flex;
   text-decoration: none;
 }
 
-
+.article-page .contact-section,
+.article-page .about-section{
+  margin-top: 150px;
+  margin-bottom: 100px ;
+}
 
 .contact-form {
   flex: 1;
@@ -3524,14 +3567,49 @@ font-size: 15px;
 }
   
 
+  .property-info h3 {
+font-weight: 500;
+font-style: Medium;
+font-size: 14px;
+line-height: 32px;
+letter-spacing: 1px;
 
+  }
+
+  .property-info h3 > span {
+    font-weight: 300;
+    font-style: Light;
+    font-size: 12px;
+    letter-spacing: 0%;
+    color: #555050;
+    border: none;
+    padding-top: 0;
+  }
+
+  .property-info p{
+    font-weight: 300;
+    font-style: Light;
+    font-size: 10px;
+    line-height: 115%;
+    letter-spacing: 1%;
+    color:#000000;
+    
+  }
 
 .property-details {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
   gap: 18px 40px;
   padding: 24px 8px;
   background: transparent;  
+  display: flex; justify-content: space-between; max-width: 600px;
+  
+}
+.property-details span{
+font-weight: 400;
+font-style: Regular;
+font-size: 14px;
+line-height: 115%;
+letter-spacing: 1%;
+
 }
 
 .detail-row {

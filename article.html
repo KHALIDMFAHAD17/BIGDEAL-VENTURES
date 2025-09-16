@@ -22,6 +22,7 @@
 </head>
 <body class="article-page">
   <section class="container-fluid p-0">
+     <div class="nav1">
     <nav class="navbar navbar-expand-md navbar-light bg-white">
       <div class="container-fluid">
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -58,6 +59,8 @@
     <a class="navbar-brand" href="#">
       <img src="img/logo.png" alt="Big Deal Ventures Logo" />
     </a>
+    </div>
+    </section>
 
     <div class="container">
       <div class="row">
@@ -87,10 +90,10 @@
 
   <!-- Property Listing Section -->
   <section class="property-listing-section container ">
-    <div class="row">
+    <div class="row d-flex">
 
       <!-- Sidebar Filters -->
-      <div class="col-md-3">
+      <div class="col-md-4">
        
         <aside class="filter-sidebar" aria-label="Property filters">
 
@@ -110,18 +113,17 @@
         <span class="caret"></span>
       </div>
       <div class="filter-section-content">
+          <div class="double-range" id="doubleRange1">
+    <input type="range" id="minRange1" min="0" max="5000" step="50" value="500" />
+    <input type="range" id="maxRange1" min="0" max="5000" step="50" value="4000" />
+    <div class="slider-track"></div>
+    <div class="slider-range" id="sliderRange1"></div>
+  </div>
+  <div class="range-labels" id="rangeLabels1">
+    <span id="minLabel1">500</span>
+    <span id="maxLabel1">4000</span>
+  </div>
 
-        <div class="range-slider-container">
-      
-          <div class="range-values">
-            <input id="budgetMinInput" type="number" min="0" max="100000" step="1000" value="10000" />
-            <input id="budgetMaxInput" type="number" min="0" max="100000" step="1000" value="65000" />
-          </div>
-          <div class="range-labels">
-            <span>Min</span>
-            <span>Max</span>
-          </div>
-        </div>
 
       </div>
     </section>
@@ -134,7 +136,7 @@
       </div>
       <div class="filter-section-content">
         <div class="tag-list" id="propertyTypeTags">
-          <div class="tag" data-filter="propertyType" data-value="Residential Apartment">Residential Apartment <span class="add-icon">+</span></div>
+          <div class="tag" data-filter="propertyType" data-value="Residential Apartment">Residential Apartment   <span class="add-icon">+</span></div>
           <div class="tag" data-filter="propertyType" data-value="Residential Land">Residential Land <span class="add-icon">+</span></div>
           <div class="tag" data-filter="propertyType" data-value="Incorporated House/Villa">Incorporated House/Villa <span class="add-icon">+</span></div>
           <div class="tag" data-filter="propertyType" data-value="Residential Lands">Residential Lands <span class="add-icon">+</span></div>
@@ -151,10 +153,9 @@
       </div>
       <div class="filter-section-content">
         <div class="tag-list bedroom-tags" id="bedroomTags">
-          <div class="tag" data-filter="bedrooms" data-value="1 BHK">1 BHK <span class="add-icon">+</span></div>
-          <div class="tag" data-filter="bedrooms" data-value="2 BHK">2 BHK <span class="add-icon">+</span></div>
-          <div class="tag" data-filter="bedrooms" data-value="3 BHK">3 BHK <span class="add-icon">+</span></div>
-          <div class="tag" data-filter="bedrooms" data-value="4+ BHK">4+ BHK <span class="add-icon">+</span></div>
+          <div class="tag" data-filter="bedrooms" data-value="1 RK/1 BHK"><span class="add-icon">+</span> 1 RK/1 BHK </div>
+          <div class="tag" data-filter="bedrooms" data-value="2 BHK"><span class="add-icon">+</span> 2 BHK </div>
+          <div class="tag" data-filter="bedrooms" data-value="3 BHK"><span class="add-icon">+</span> 3 BHK </div>
         </div>
       </div>
     </section>
@@ -180,22 +181,18 @@
         Area
         <span class="caret"></span>
       </div>
-      <div class="filter-section-content">
+       <div class="filter-section-content">
+          <div class="double-range" id="doubleRange2">
+    <input type="range" id="minRange2" min="0" max="5000" step="50" value="500" />
+    <input type="range" id="maxRange2" min="0" max="5000" step="50" value="4000" />
+    <div class="slider-track"></div>
+    <div class="slider-range" id="sliderRange2"></div>
+  </div>
+  <div class="range-labels" id="rangeLabels2">
+    <span id="minLabel2">500</span>
+    <span id="maxLabel2">4000</span>
+  </div>
 
-        <div class="range-slider-container">
-          <div class="double-range">
-            <input id="areaMin" type="range" min="0" max="5000" step="50" value="200" />
-            <input id="areaMax" type="range" min="0" max="5000" step="50" value="1300" />
-          </div>
-          <div class="range-values">
-            <input id="areaMinInput" type="number" min="0" max="5000" step="50" value="200" />
-            <input id="areaMaxInput" type="number" min="0" max="5000" step="50" value="1300" />
-          </div>
-          <div class="range-labels">
-            <span>Min</span>
-            <span>Max</span>
-          </div>
-        </div>
 
       </div>
     </section>
@@ -229,25 +226,46 @@
       </div>
 
       <!-- Property Results -->
-      <div  class="col-md-9 aproperty">
+      <div  class="col-md-8 aproperty">
         <h2>1085 results | Property in <span class="highlight-city">Mangaluru</span> for Sale</h2>
 
         <div class="aproperty-cards">
               
-         <div class="aproperty-card">
+         <div class="aproperty-card" style="display: flex; align-items: center; gap: 20px;">
             <img src="img/prop/aprop1.png" alt="Pooja Apartment" class="property-image" />
-            <div class="property-info">
-              <h3>Pooja Apartment</h3>
-              <p>3 BHK House in kadri, Mangaluru</p>
+            <div class="property-info" style="flex: 1;">
+              <h3>Pooja Apartment <br>
+              <span>3 BHK House in kadri, Mangaluru</span></h3>
               <p>Nearby: St Theresa's ICSE School - 0.1 km • KMC Hospital Mangaluru - 0.4 km • Machali - 0.1 km • City Centre Mall - 0.1 km</p>
-              <div class="property-details">
+              <div class="property-details" style="display: flex; justify-content: space-between; max-width: 600px;">
                 <span>3 BHK ₹98 L</span>
                 <span>1000 sq.ft Builtup area</span>
                 <span>Ready to move Possession status</span>
               </div>
-              <div class="property-actions" >
+              <div class="property-actions" style="display: flex; justify-content: space-between; align-items: center; max-width: 600px;">
                 <p class="property-time">3mo ago</p>
-                  <div class="btn-grp">
+                  <div class="btn-grp" style="display: flex; gap: 10px;">
+                      <button class="btn btn-share">Share</button>
+                    <button class="btn btn-contact">Contact us</button>
+                  </div>
+              </div>
+           </div>
+          </div>
+       
+          <div class="aproperty-card" style="display: flex; align-items: center; gap: 20px;">
+            <img src="img/prop/aprop1.png" alt="Pooja Apartment" class="property-image" />
+            <div class="property-info" style="flex: 1;">
+              <h3>Pooja Apartment <br>
+              <span>3 BHK House in kadri, Mangaluru</span></h3>
+              <p>Nearby: St Theresa's ICSE School - 0.1 km • KMC Hospital Mangaluru - 0.4 km • Machali - 0.1 km • City Centre Mall - 0.1 km</p>
+              <div class="property-details" style="display: flex; justify-content: space-between; max-width: 600px;">
+                <span>3 BHK ₹98 L</span>
+                <span>1000 sq.ft Builtup area</span>
+                <span>Ready to move Possession status</span>
+              </div>
+              <div class="property-actions" style="display: flex; justify-content: space-between; align-items: center; max-width: 600px;">
+                <p class="property-time">3mo ago</p>
+                  <div class="btn-grp" style="display: flex; gap: 10px;">
                       <button class="btn btn-share">Share</button>
                     <button class="btn btn-contact">Contact us</button>
                   </div>
@@ -255,47 +273,40 @@
            </div>
           </div>
           
-
-          <div class="aproperty-cards">
-              
-         <div class="aproperty-card">
+          <div class="aproperty-card" style="display: flex; align-items: center; gap: 20px;">
             <img src="img/prop/aprop2.png" alt="Pooja Apartment" class="property-image" />
-            <div class="property-info">
-              <h3>Pooja Apartment</h3>
-              <p>3 BHK House in kadri, Mangaluru</p>
+            <div class="property-info" style="flex: 1;">
+              <h3>Pooja Apartment <br>
+              <span>3 BHK House in kadri, Mangaluru</span></h3>
               <p>Nearby: St Theresa's ICSE School - 0.1 km • KMC Hospital Mangaluru - 0.4 km • Machali - 0.1 km • City Centre Mall - 0.1 km</p>
-              <div class="property-details">
+              <div class="property-details" style="display: flex; justify-content: space-between; max-width: 600px;">
                 <span>3 BHK ₹98 L</span>
                 <span>1000 sq.ft Builtup area</span>
                 <span>Ready to move Possession status</span>
               </div>
-              <div class="property-actions" >
+              <div class="property-actions" style="display: flex; justify-content: space-between; align-items: center; max-width: 600px;">
                 <p class="property-time">3mo ago</p>
-                  <div class="btn-grp">
+                  <div class="btn-grp" style="display: flex; gap: 10px;">
                       <button class="btn btn-share">Share</button>
                     <button class="btn btn-contact">Contact us</button>
                   </div>
               </div>
            </div>
           </div>
-
-
-          <div class="aproperty-cards">
-              
-         <div class="aproperty-card">
+          <div class="aproperty-card" style="display: flex; align-items: center; gap: 20px;">
             <img src="img/prop/aprop3.png" alt="Pooja Apartment" class="property-image" />
-            <div class="property-info">
-              <h3>Pooja Apartment</h3>
-              <p>3 BHK House in kadri, Mangaluru</p>
+            <div class="property-info" style="flex: 1;">
+              <h3>Pooja Apartment <br>
+              <span>3 BHK House in kadri, Mangaluru</span></h3>
               <p>Nearby: St Theresa's ICSE School - 0.1 km • KMC Hospital Mangaluru - 0.4 km • Machali - 0.1 km • City Centre Mall - 0.1 km</p>
-              <div class="property-details">
+              <div class="property-details" style="display: flex; justify-content: space-between; max-width: 600px;">
                 <span>3 BHK ₹98 L</span>
                 <span>1000 sq.ft Builtup area</span>
                 <span>Ready to move Possession status</span>
               </div>
-              <div class="property-actions" >
+              <div class="property-actions" style="display: flex; justify-content: space-between; align-items: center; max-width: 600px;">
                 <p class="property-time">3mo ago</p>
-                  <div class="btn-grp">
+                  <div class="btn-grp" style="display: flex; gap: 10px;">
                       <button class="btn btn-share">Share</button>
                     <button class="btn btn-contact">Contact us</button>
                   </div>
@@ -303,23 +314,20 @@
            </div>
           </div>
 
-
-          <div class="aproperty-cards">
-              
-         <div class="aproperty-card">
+          <div class="aproperty-card" style="display: flex; align-items: center; gap: 20px;">
             <img src="img/prop/aprop4.png" alt="Pooja Apartment" class="property-image" />
-            <div class="property-info">
-              <h3>Pooja Apartment</h3>
-              <p>3 BHK House in kadri, Mangaluru</p>
+            <div class="property-info" style="flex: 1;">
+              <h3>Pooja Apartment <br>
+              <span>3 BHK House in kadri, Mangaluru</span></h3>
               <p>Nearby: St Theresa's ICSE School - 0.1 km • KMC Hospital Mangaluru - 0.4 km • Machali - 0.1 km • City Centre Mall - 0.1 km</p>
-              <div class="property-details">
+              <div class="property-details" style="display: flex; justify-content: space-between; max-width: 600px;">
                 <span>3 BHK ₹98 L</span>
                 <span>1000 sq.ft Builtup area</span>
                 <span>Ready to move Possession status</span>
               </div>
-              <div class="property-actions" >
+              <div class="property-actions" style="display: flex; justify-content: space-between; align-items: center; max-width: 600px;">
                 <p class="property-time">3mo ago</p>
-                  <div class="btn-grp">
+                  <div class="btn-grp" style="display: flex; gap: 10px;">
                       <button class="btn btn-share">Share</button>
                     <button class="btn btn-contact">Contact us</button>
                   </div>
@@ -327,28 +335,7 @@
            </div>
           </div>
 
-          <div class="aproperty-cards">
-              
-         <div class="aproperty-card">
-            <img src="img/prop/aprop5.png" alt="Pooja Apartment" class="property-image" />
-            <div class="property-info">
-              <h3>Pooja Apartment</h3>
-              <p>3 BHK House in kadri, Mangaluru</p>
-              <p>Nearby: St Theresa's ICSE School - 0.1 km • KMC Hospital Mangaluru - 0.4 km • Machali - 0.1 km • City Centre Mall - 0.1 km</p>
-              <div class="property-details">
-                <span>3 BHK ₹98 L</span>
-                <span>1000 sq.ft Builtup area</span>
-                <span>Ready to move Possession status</span>
-              </div>
-              <div class="property-actions" >
-                <p class="property-time">3mo ago</p>
-                  <div class="btn-grp">
-                      <button class="btn btn-share">Share</button>
-                    <button class="btn btn-contact">Contact us</button>
-                  </div>
-              </div>
-           </div>
-          </div>
+  
 
 
           
@@ -364,7 +351,7 @@
   
 
  <!-- contact  -->
-    <section class="contact-section container">
+    <section class="contact-section ">
       <h2 class="blac2 col-md-6 sfpro">
         Connect With Our Experts
       </h2>
