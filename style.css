@@ -450,10 +450,22 @@ font-size: 10px;
     font-size: 12px;
   }
 
+  /* Reduce gap between input fields in contact form on mobile */
+  .contact-form input,
+  .contact-form textarea {
+    margin-bottom: 5px;
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .contact-form .row.g-3 {
+    gap: 5px;
+  }
+
   .loc .row {
     justify-content: center;
     gap: 15px;
-   
+
   }
 
   .navbar-brand {
@@ -2698,6 +2710,8 @@ letter-spacing: 0%;
     margin-top: 10px;    
   }
 
+  
+
   .contact-info-text {
     margin-top: 10px;
   }
@@ -2722,6 +2736,10 @@ letter-spacing: 0%;
   .forms {
     width: 100%;
     padding: 5px;
+  }
+
+  .contact-map{
+    margin-top: 10px;
   }
 
   .contact-form {
