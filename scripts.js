@@ -210,5 +210,22 @@ function setupDoubleRange(minRangeId, maxRangeId, sliderRangeId, minLabelId, max
     updateRange();
   }
 
-  setupDoubleRange('minRange1', 'maxRange1', 'sliderRange1', 'minLabel1', 'maxLabel1');
+  // Removed double range setup for budget filter
+  // setupDoubleRange('minRange1', 'maxRange1', 'sliderRange1', 'minLabel1', 'maxLabel1');
   setupDoubleRange('minRange2', 'maxRange2', 'sliderRange2', 'minLabel2', 'maxLabel2');
+
+  function setupSingleRange(rangeId, labelId) {
+    const range = document.getElementById(rangeId);
+    const label = document.getElementById(labelId);
+
+    function updateLabel() {
+      label.textContent = range.value;
+      const percent = (range.value - range.min) / (range.max - range.min) * 100;
+      range.style.setProperty('--value', percent + '%');
+    }
+
+    range.addEventListener('input', updateLabel);
+    updateLabel();
+  }
+
+  setupSingleRange('range1', 'rangeLabel1');

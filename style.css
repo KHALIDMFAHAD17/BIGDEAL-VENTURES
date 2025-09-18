@@ -2152,6 +2152,71 @@ max-width: 400px;
     user-select: none;
   }
 
+  /* Single Range Slider */
+  .single-range {
+    position: relative;
+    width: 300px;
+    height: 40px;
+  }
+  .single-range input[type="range"] {
+    position: absolute;
+    left: 0;
+    top: 15px;
+    width: 100%;
+    pointer-events: all;
+    -webkit-appearance: none;
+    background: transparent;
+    margin: 0;
+    padding: 0;
+  }
+  /* Remove default appearance */
+  .single-range input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+  }
+  .single-range input[type="range"]::-moz-range-thumb {
+    -moz-appearance: none;
+  }
+  /* Track */
+  .single-range input[type="range"]::-webkit-slider-runnable-track {
+    height: 6px;
+    background: #ddd;
+    border-radius: 3px;
+  }
+  .single-range input[type="range"]::-moz-range-track {
+    height: 6px;
+    background: #000000;
+    border-radius: 3px;
+  }
+  /* Thumb */
+  .single-range input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    height: 10px;
+    width: 10px;
+    background: #050505;
+    border-radius: 50%;
+    cursor: pointer;
+    margin-top: -5px;
+    position: relative;
+    z-index: 3;
+  }
+  .single-range input[type="range"]::-moz-range-thumb {
+    height: 10px;
+    width: auto;
+    background: #0e0e0e;
+    border-radius: 50%;
+    cursor: pointer;
+    position: relative;
+    z-index: 3;
+  }
+  /* Single Range Labels */
+  .single-range-labels {
+    display: flex;
+    justify-content: center;
+    font-size: 12px;
+    margin-top: 8px;
+    user-select: none;
+  }
+
     /* Checkboxes */
     .locality-list {
       margin-top: 8px;
@@ -2517,7 +2582,7 @@ display: flex;
   position: relative;
   height: 700px; /* fixed height for hero */
   z-index: 0;
-  margin-top: -50px;
+  margin-top: -100px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -2527,7 +2592,7 @@ display: flex;
 
 .blog-page .hero-banner h1,
 .about-page .hero-banner h1{
-  margin-top: 0;
+  margin-top: 150px;
   font-weight: 800;
   font-style: ExtraBold;
   font-size: 50px;
@@ -2871,7 +2936,7 @@ letter-spacing: 0%;
   z-index: -1;
   mask-image: linear-gradient(to bottom, rgb(255, 240, 240) 30%, transparent 100%);
 }
-.blog-page .hero-content1,
+
 .about-page .hero-content1{
   font-weight: 200;
   font-size: 64px;
@@ -2883,8 +2948,25 @@ letter-spacing: 0%;
   margin-right:100px;
   text-align: left;
 }
+.blog-page .hero-content1{
+  font-weight: 200;
+  font-size: 64px;
+  letter-spacing: 3px;
+  color: #222;
+  z-index: 2;
+  position: absolute;
+  left: 300px;
+}
 
-.blog-page .hero-content2,
+.blog-page .hero-content2{
+  font-weight: 400;
+  font-size: 96px;
+  letter-spacing: 6px;
+  color: #111;
+  margin-top: 50px;
+  left: 700px;
+  position:absolute;
+}
 .about-page .hero-content2{
  font-weight: 400;
   font-size: 96px;
