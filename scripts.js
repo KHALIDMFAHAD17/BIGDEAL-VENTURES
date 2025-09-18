@@ -49,7 +49,7 @@ showSlide(currentSlide);
 setInterval(() => {
   currentSlide = (currentSlide + 1) % slides.length;
   showSlide(currentSlide);
-}, 4000);
+}, 1000000);
 
 // Initialize the carousel
 showSlide(currentSlide);
@@ -210,8 +210,6 @@ function setupDoubleRange(minRangeId, maxRangeId, sliderRangeId, minLabelId, max
     updateRange();
   }
 
-  // Removed double range setup for budget filter
-  // setupDoubleRange('minRange1', 'maxRange1', 'sliderRange1', 'minLabel1', 'maxLabel1');
   setupDoubleRange('minRange2', 'maxRange2', 'sliderRange2', 'minLabel2', 'maxLabel2');
 
   function setupSingleRange(rangeId, labelId) {
