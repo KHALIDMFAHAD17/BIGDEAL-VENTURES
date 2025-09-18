@@ -57,16 +57,35 @@ showSlide(currentSlide);
 // Start auto-scrolling the carousel
 autoScrollCarousel();
 
+
+const select = document.getElementById("city-select");
+
+select.addEventListener("mousedown", () => {
+  select.classList.add("opened");
+});
+
+select.addEventListener("blur", () => {
+  select.classList.remove("opened");
+});
+
+
 // Testimonial Carousel
 let currentTestimonial = 0;
 const testimonialSlides = document.querySelectorAll('.testimonial-slide');
 const testimonialPrev = document.getElementById('testimonial-prev');
 const testimonialNext = document.getElementById('testimonial-next');
+const testimonialImages = [
+  'img/prop/prop5.png',
+  'img/prop/prop6.png',
+  'img/prop/prop1.png'
+];
 
 function showTestimonial(index) {
   testimonialSlides.forEach((slide, i) => {
     slide.classList.toggle('active', i === index);
   });
+  const testImg = document.querySelector('.testimg img.img-fluid');
+  testImg.src = testimonialImages[index];
 }
 
 function nextTestimonial() {

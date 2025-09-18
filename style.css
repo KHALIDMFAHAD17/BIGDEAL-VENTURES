@@ -51,7 +51,6 @@ font-weight: 274;
 font-style: Light;
 font-size: 20px;
 
-line-height: Static/Headline Small/Line Height;
 letter-spacing: Static/Headline Small/Tracking;
 text-align: center;
 
@@ -156,18 +155,21 @@ letter-spacing: Static/Display Large/Tracking;
   border: none;
   background: transparent;
   font-size: 16px;
-  color: var(--nav-text, white);
+  color: var(--nav-text, #fff);
   padding-bottom: 8px;
   cursor: pointer;
   position: relative;
 }
 
-.nav-tabs-custom button.active,
-.nav-tabs-custom button:hover {
-  color: white;
+.nav-tabs-custom button.active
+ {
+  color: #fff;
   border-bottom: 2px solid #cc1a1a;
 }
 
+.nav-tabs-custom button:hover{
+  border-bottom: 2px solid #cc1a1a;
+}
 /* Select Box */
 .custom-select-wrapper {
   max-width: 100%;
@@ -193,14 +195,27 @@ letter-spacing: Static/Display Large/Tracking;
   border: none;
   outline: none;
   appearance: none;
-  background: white url('data:image/svg+xml;utf8,<svg fill="none" height="16" stroke="rgb(204,26,26)" stroke-width="2" viewBox="0 0 24 24" width="16" xmlns="http://www.w3.org/2000/svg"><path d="M6 9l6 6 6-6"/></svg>') no-repeat right 1.5rem center/1rem auto;
+  background: white url('img/icon/arrowdown.svg') no-repeat right 20px center/1rem auto;
   cursor: pointer;
 }
 
 .custom-select:focus {
-  outline: 3px solid #cc1a1a;
+  outline: 1px solid #cc1a1a;
   outline-offset: 2px;
 }
+
+ .custom-select-wrapper option {
+  border-radius: 15px; 
+  color: white;
+  border: 2px solid #dddddd;
+  background: #000000;
+  padding: 10px;
+  transition: 0.4s;
+}
+  .custom-select-wrapper option:hover {
+  color: #ff0000;
+  text-decoration: none;
+  }
 
 /* Carousel */
 .carousel-container {
@@ -216,10 +231,11 @@ justify-items: flex-start;
 
 
 
+
 .carousel-slide {
   position: absolute;
  
-  width: 660px;        /* active slide width */
+  width: 850px;        /* active slide width */
   height: 100%;
   transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.8s;
   transform-origin: center center;
@@ -238,8 +254,8 @@ justify-items: flex-start;
 }
 
 .carousel-slide.next {
-  transform: translateX(540px) translateZ(-120px) rotateY(12deg) scale(0.9);
-  opacity: 0.95;
+  transform: translateX(600px) translateZ(-120px) rotateY(12deg) scale(0.9);
+  opacity: 0.9;
   z-index: 2;
   pointer-events: auto;
   cursor: pointer;
@@ -603,7 +619,7 @@ font-size: 10px;
             font-weight: 200;
             font-style: ExtraLight;
             font-size: 16px;
-            line-height: 63px;
+            margin-bottom: 20px ;
             letter-spacing: 1px;
 
         }
@@ -622,22 +638,20 @@ font-size: 10px;
             display: grid;
             grid-template-columns: repeat(3, auto);
             grid-template-rows: repeat(2, auto);
-            gap: 15px 30px;
+            gap: 15px 20px;
             font-size: 1rem;
             margin-top: 12px;
-            width: 100%;
-            justify-content: start;
             align-items: center;
           }
           .property-attr {
-            color: #444040;
+            color: #7c7a7a;
             display: flex;
             align-items: center;
-            gap:8px;
+            gap:9px;
             user-select: none;
             font-family: "Inter", sans-serif;
             font-weight: 800;
-            font-style: Extra Bold;
+            /* font-weight: Extra Bold; */
             font-size: 12px;
             line-height: 150%;
             letter-spacing: 0%;
@@ -648,7 +662,7 @@ font-size: 10px;
               width: 18px;
               height:18px;
               opacity: 0.8;
-              filter: brightness(10%);
+              filter: brightness(15%);
               
           }
 
@@ -754,7 +768,6 @@ font-size: 10px;
         .property-subtitle,
         .location-subtitle {
        font-size: 16px;
-       line-height: 2;
 
         }
 
@@ -931,23 +944,23 @@ padding: 10px;
 font-weight: 300;
 font-style: Light;
 font-size: 20px;
-
-line-height: 150%;
 letter-spacing: 9%;
+margin-left: 30px;
 }
 
  .btn-stack {
       position: relative;
       display: inline-block;
       height: 48px;
+      margin-left: 30px;
     }
 
     .btn-black {
       position: absolute;
       top: 0px;
-      left: 25px;
+      left: 45px;
       width: 170px;
-      height: 40px;
+      height: 44px;
       border-radius: 25px;
       background: #000;
       z-index:0;
@@ -956,8 +969,10 @@ letter-spacing: 9%;
     }
 
     .btn-black .rarrow{
-  z-index: 0;
-      text-align: right;
+      position: absolute;
+      z-index: 1;
+      right: 12px;
+      top:12px;
 
     }
 
@@ -966,17 +981,24 @@ letter-spacing: 9%;
       top: 0;
       left: 0;
       width: 170px;
-      height: 40px;
+      height: 44px;
       border-radius: 25px;
       background: #ef1515;
       color: #fff;
       font-weight: 600;
-      font-size: 1rem;
+      font-size: 17px;
       border: none;
       z-index: 1;
       cursor: pointer;
       transition: filter 0.2s;
       box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      font-weight: 600;
+      font-style: SemiBold;
+      font-size: Body/Size Medium;
+      line-height: 100%;
+      letter-spacing: 0%;
+      text-align: center;
+
     }
 
     .btn-red:hover {
@@ -1079,7 +1101,7 @@ letter-spacing: 9%;
     .test-head {
         font-weight: 700;
         font-style: Bold;
-        font-size:48px;
+        font-size:64px;
         margin-top:-80px ;
         letter-spacing: 1%;
       
@@ -1090,7 +1112,6 @@ letter-spacing: 9%;
       font-weight: 400;
       font-style: Regular;
       font-size: 16px;
-      letter-spacing: 1px;
 
     }
 
@@ -1132,7 +1153,6 @@ letter-spacing: 9%;
     
     .testimonial-text p {
       font-size: 18px;
-      line-height: 1.6;
       color: #333;
       margin: 0 0 25px 0;
       font-weight: 500;
@@ -1227,12 +1247,12 @@ vertical-align: middle;
 
 /* About section  */
   .about-section {
+    max-width: 1200px;
   display: flex;
   align-items: center;
   background: #f9f0f0; /* Light pinkish background */
-  padding: 60px 40px;
-  gap: 40px;
   margin: 60px auto;
+  margin-right: 70px;
   border-radius: 30px;
   position: relative;
   width:80%;
@@ -1244,7 +1264,7 @@ vertical-align: middle;
 }
 .about-image img {
   border-radius: 20px;
-  width:500px;
+  width:660px;
   margin: 10px;
   height: auto;
   object-fit: cover;
@@ -1279,7 +1299,7 @@ vertical-align: middle;
     padding: 20px;
   }
 }
-.about-content h1 {
+.about-content h2 {
   font-size: 2.2rem;
   color: #222;
   margin-bottom: 14px;
@@ -1309,15 +1329,25 @@ vertical-align: middle;
   background: #fff;
   color: #222;
   border: 2px solid #222;
-  border-radius: 30px;
-  font-size: 1rem;
-  padding: 12px 24px;
+  border-radius: 16px;
+font-weight: 600;
+font-style: SemiBold;
+font-size: Body/Size Medium;
+line-height: 100%;
+letter-spacing: 0%;
+text-align: center;
+  padding: 12px;
   cursor: pointer;
   margin-bottom: 25px;
   gap: 8px;
   transition: background .2s;
 }
-.btn-arrow:hover {
+.btn-arrow a {
+ color: #000;
+  text-decoration: none;
+  
+}
+.btn-arrow:hover,.btn-arrow a:hover {
   background: #222;
   color: #fff;
 }
@@ -1366,9 +1396,9 @@ line-height: 100%;
 letter-spacing: 0%;
 
 }
-.section-header .view-all-btn {
+.section-header .view-all-btn  {
   background: #111;
-  color: #fff;
+   color: #fff;
   border: none;
   font-family: DM Sans;
   font-weight: 600;
@@ -1383,6 +1413,17 @@ letter-spacing: 0%;
   margin: 50px;
   width: 120px;
 
+}
+.section-header .view-all-btn a{
+    color: #fff;
+    text-decoration: none;
+}
+
+.section-header .view-all-btn:hover{
+  color: #000;
+  text-decoration: none;
+  background: #fff;
+  border: #000 solid 1px;
 }
 .blog-feature {
   display: flex;
@@ -2466,7 +2507,7 @@ display: flex;
   .about-page .navbar-brand,
   .blog-page .navbar-brand,
  .contact-page .navbar-brand{
-  padding-top: 0px;
+  padding-top: 20px;
    z-index: 2;
   position: absolute;
  }
@@ -2476,11 +2517,10 @@ display: flex;
   position: relative;
   height: 700px; /* fixed height for hero */
   z-index: 0;
-  margin-top: -20px;
+  margin-top: -50px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
   text-align: center;
   overflow: hidden;
 }
@@ -2800,7 +2840,7 @@ letter-spacing: 0%;
 .about-page .hero-banner::before {
   content: '';
   position: absolute;
-  top: 0;
+  top: -10px;
   left: 50%;
   width: 100%;
   height: 100%;
